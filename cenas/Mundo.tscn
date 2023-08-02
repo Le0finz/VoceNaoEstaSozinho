@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://csxox6m3b0nj8"]
+[gd_scene load_steps=11 format=3 uid="uid://csxox6m3b0nj8"]
 
 [ext_resource type="Texture2D" uid="uid://k0whpmje0fh0" path="res://VNES ASsets/Tile.png" id="1_wvik3"]
 [ext_resource type="Texture2D" uid="uid://q1d6r4ue0138" path="res://VNES ASsets/abelinho.png" id="2_16qpe"]
 [ext_resource type="PackedScene" uid="uid://bfxpfy6adykub" path="res://cenas/player.tscn" id="3_ovuux"]
 [ext_resource type="PackedScene" uid="uid://vpjb71yu1yo5" path="res://cenas/Flor.tscn" id="4_aw7sw"]
+[ext_resource type="PackedScene" uid="uid://c2nhoysivdxbt" path="res://cenas/shop.tscn" id="5_3y8ph"]
+[ext_resource type="Script" path="res://Scripts/colmeia.gd" id="5_ply1o"]
+[ext_resource type="Texture2D" uid="uid://cqyjuhtj7ot2t" path="res://VNES ASsets/colmeia.png" id="7_ofsf8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2gc32"]
 resource_name = "Tile"
@@ -14,6 +17,8 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_5s0aw"]
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_2gc32")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmun6"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -35,3 +40,18 @@ position = Vector2(143, -80)
 zoom = Vector2(3.625, 3.625)
 
 [node name="Area2D" parent="." instance=ExtResource("4_aw7sw")]
+
+[node name="Area2D2" type="Area2D" parent="."]
+script = ExtResource("5_ply1o")
+
+[node name="Shop" parent="Area2D2" instance=ExtResource("5_3y8ph")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(271, -14)
+shape = SubResource("RectangleShape2D_dmun6")
+
+[node name="colmeia" type="Sprite2D" parent="Area2D2"]
+position = Vector2(271, -19)
+texture = ExtResource("7_ofsf8")
+
+[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]

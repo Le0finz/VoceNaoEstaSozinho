@@ -1,7 +1,104 @@
-[gd_scene format=3 uid="uid://c2nhoysivdxbt"]
+[gd_scene load_steps=6 format=3 uid="uid://c2nhoysivdxbt"]
+
+[ext_resource type="Script" path="res://cenas/shop.gd" id="1_myp3m"]
+
+[sub_resource type="Animation" id="Animation_x6xun"]
+resource_name = "TransIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -700)]
+}
+
+[sub_resource type="Animation" id="Animation_ynyj2"]
+resource_name = "TransOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -700), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_huotr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y4v2t"]
+_data = {
+"RESET": SubResource("Animation_huotr"),
+"TransIn": SubResource("Animation_x6xun"),
+"TransOut": SubResource("Animation_ynyj2")
+}
 
 [node name="Shop" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_myp3m")
 
 [node name="Panel" type="Panel" parent="."]
-offset_right = 1156.0
-offset_bottom = 647.0
+offset_left = 77.0
+offset_top = 683.0
+offset_right = 1073.0
+offset_bottom = 1161.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y4v2t")
+}
+
+[node name="Button" type="Button" parent="."]
+offset_left = 947.0
+offset_top = 712.0
+offset_right = 1044.0
+offset_bottom = 768.0
+text = "Fechar"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Name" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 481.0
+offset_top = 756.0
+offset_right = 580.0
+offset_bottom = 805.0
+text = "Name"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Des" type="Label" parent="Control"]
+offset_left = 282.0
+offset_top = 1011.0
+offset_right = 839.0
+offset_bottom = 1101.0
+text = "gqoegnqiongqongqiodngoqngoiqdngi"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
