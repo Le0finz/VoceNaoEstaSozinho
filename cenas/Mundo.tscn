@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://csxox6m3b0nj8"]
+
+[ext_resource type="Texture2D" uid="uid://k0whpmje0fh0" path="res://VNES ASsets/Tile.png" id="1_wvik3"]
+[ext_resource type="Texture2D" uid="uid://q1d6r4ue0138" path="res://VNES ASsets/abelinho.png" id="2_16qpe"]
+[ext_resource type="PackedScene" uid="uid://bfxpfy6adykub" path="res://cenas/player.tscn" id="3_ovuux"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2gc32"]
+resource_name = "Tile"
+texture = ExtResource("1_wvik3")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5s0aw"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_2gc32")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_5s0aw")
+cell_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(-65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -131072, 0, 0, -196608, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0, -196604, 0, 0, -131068, 0, 0, -131069, 0, 0, -131070, 0, 0, -131071, 0, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -327680, 0, 0, -327679, 0, 0, -327678, 0, 0, -327677, 0, 0, -327676, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -131064, 0, 0, -196600, 0, 0, -262136, 0, 0, -327672, 0, 0, -327673, 0, 0, -327674, 0, 0, -327675, 0, 0, -262139, 0, 0, -196603, 0, 0, -131067, 0, 0, -262138, 0, 0, -262137, 0, 0, -196601, 0, 0, -196602, 0, 0, -131066, 0, 0, -131065, 0, 0)
+
+[node name="Abelinho" type="Sprite2D" parent="."]
+position = Vector2(241, -112)
+texture = ExtResource("2_16qpe")
+
+[node name="player" parent="." instance=ExtResource("3_ovuux")]
+position = Vector2(16, -18)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(143, -80)
+zoom = Vector2(3.625, 3.625)
