@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://csxox6m3b0nj8"]
+[gd_scene load_steps=7 format=3 uid="uid://csxox6m3b0nj8"]
 
 [ext_resource type="Texture2D" uid="uid://k0whpmje0fh0" path="res://VNES ASsets/Tile.png" id="1_wvik3"]
 [ext_resource type="Texture2D" uid="uid://q1d6r4ue0138" path="res://VNES ASsets/abelinho.png" id="2_16qpe"]
 [ext_resource type="PackedScene" uid="uid://bfxpfy6adykub" path="res://cenas/player.tscn" id="3_ovuux"]
+[ext_resource type="PackedScene" uid="uid://vpjb71yu1yo5" path="res://cenas/Flor.tscn" id="4_aw7sw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2gc32"]
 resource_name = "Tile"
@@ -32,3 +33,5 @@ position = Vector2(16, -18)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(143, -80)
 zoom = Vector2(3.625, 3.625)
+
+[node name="Area2D" parent="." instance=ExtResource("4_aw7sw")]
