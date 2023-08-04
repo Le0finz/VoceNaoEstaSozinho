@@ -39,19 +39,19 @@ position = Vector2(16, -18)
 position = Vector2(143, -80)
 zoom = Vector2(3.625, 3.625)
 
-[node name="Area2D" parent="." instance=ExtResource("4_aw7sw")]
+[node name="AreaFlor" parent="." instance=ExtResource("4_aw7sw")]
 
-[node name="Area2D2" type="Area2D" parent="."]
+[node name="AreaColmeia" type="Area2D" parent="."]
 script = ExtResource("5_ply1o")
 
-[node name="Shop" parent="Area2D2" instance=ExtResource("5_3y8ph")]
+[node name="Shop" parent="AreaColmeia" instance=ExtResource("5_3y8ph")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaColmeia"]
 position = Vector2(271, -14)
 shape = SubResource("RectangleShape2D_dmun6")
 
-[node name="colmeia" type="Sprite2D" parent="Area2D2"]
+[node name="colmeia" type="Sprite2D" parent="AreaColmeia"]
 position = Vector2(271, -19)
 texture = ExtResource("7_ofsf8")
 
-[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]
+[connection signal="body_entered" from="AreaColmeia" to="AreaColmeia" method="_on_body_entered"]

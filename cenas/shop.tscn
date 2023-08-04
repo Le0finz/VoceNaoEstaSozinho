@@ -1,6 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2nhoysivdxbt"]
+[gd_scene load_steps=8 format=3 uid="uid://c2nhoysivdxbt"]
 
 [ext_resource type="Script" path="res://cenas/shop.gd" id="1_myp3m"]
+[ext_resource type="PackedScene" uid="uid://uv0hpdpr7o8h" path="res://cenas/icone.tscn" id="2_86utv"]
+[ext_resource type="Script" path="res://cenas/Polen.gd" id="2_b16em"]
+
+[sub_resource type="Animation" id="Animation_huotr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_x6xun"]
 resource_name = "TransIn"
@@ -30,21 +47,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, -700), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_huotr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y4v2t"]
@@ -93,6 +95,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Des" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 282.0
 offset_top = 1011.0
 offset_right = 839.0
@@ -101,4 +104,40 @@ text = "gqoegnqiongqongqiodngoqngoiqdngi"
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="Next" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 731.0
+offset_top = 890.0
+offset_right = 749.0
+offset_bottom = 921.0
+text = ">"
+
+[node name="Prev" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 895.0
+offset_right = 394.0
+offset_bottom = 926.0
+text = "<"
+
+[node name="Buy" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 516.0
+offset_top = 1065.0
+offset_right = 620.0
+offset_bottom = 1109.0
+text = "Incubar"
+
+[node name="icone" parent="Control" instance=ExtResource("2_86utv")]
+
+[node name="Polen" type="Label" parent="."]
+offset_left = 122.0
+offset_top = 724.0
+offset_right = 218.0
+offset_bottom = 767.0
+script = ExtResource("2_b16em")
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="Control/Prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="Control/Buy" to="." method="_on_buy_pressed"]
